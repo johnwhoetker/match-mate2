@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MatchMate — A smarter way to connect</title>
+  <meta name="description" content="MatchMate: connect people with shared interests. Profile creation, matching, and messaging." />
+  <style>
+    :root{--max-width:960px;--accent:#2563eb;--muted:#6b7280;--bg:#fafafa}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{background:var(--bg);color:#0f172a;display:flex;align-items:flex-start;justify-content:center;padding:32px}
+    .container{max-width:var(--max-width);width:100%;background:white;border-radius:12px;box-shadow:0 6px 24px rgba(2,6,23,0.08);overflow:hidden}
+    header{padding:28px 36px;border-bottom:1px solid #eef2ff;display:flex;align-items:center;gap:18px}
+    .logo{display:flex;flex-direction:column}
+    .logo h1{margin:0;font-size:20px;letter-spacing:-0.4px}
+    .logo p{margin:0;color:var(--muted);font-size:13px}
+    nav{margin-left:auto}
+    nav a{margin-left:16px;color:var(--accent);text-decoration:none;font-weight:600}
+    main{padding:28px 36px;display:grid;grid-template-columns:1fr 320px;gap:28px}
+    section.card{background:#fff;padding:18px;border-radius:10px;border:1px solid #f1f5f9}
+    h2{margin-top:0}
+    ul{margin:8px 0 16px 20px}
+    .meta{color:var(--muted);font-size:14px}
+    .sidebar{position:sticky;top:28px;height:max-content}
+    .features li{margin-bottom:8px}
+    .cta{display:flex;gap:10px;margin-top:12px}
+    .btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:white}
+    .btn.ghost{background:transparent;border:1px solid #e6eefc;color:var(--accent)}
+    footer{padding:18px 36px;border-top:1px solid #eef2ff;color:var(--muted);font-size:13px}
+    @media (max-width:900px){main{grid-template-columns:1fr;padding:18px};header{padding:18px}
+      footer, .container{padding:0} .logo h1{font-size:18px}}
+    /* small form styles */
+    form input, form textarea, form select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eefc;margin-bottom:10px}
+    .small-note{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="container" role="document">
+    <header>
+      <div class="logo">
+        <h1>MatchMate</h1>
+        <p>A smarter way to connect people with shared interests</p>
+      </div>
+      <nav aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#features">Features</a>
+        <a href="#technical">Tech</a>
+      </nav>
+    </header>
+
+    <main>
+      <div>
+        <section id="overview" class="card">
+          <h2>Application Overview</h2>
+          <p>MatchMate is a simple web application that connects people with similar interests. Users can create a profile, list their hobbies, and find others with matching preferences. The platform provides an easy, fun, and safe way to make new connections.</p>
+
+          <h3>Team Members</h3>
+          <ul>
+            <li>Wyatt Hoetker</li>
+          </ul>
+
+          <h3 id="features">Feature List (Prioritized)</h3>
+          <ul class="features">
+            <li>User registration and login</li>
+            <li>Profile creation</li>
+            <li>Interest-based matching</li>
+            <li>Chat and messaging</li>
+          </ul>
+
+          <h3>Future Feature List</h3>
+          <ul>
+            <li>AI-powered matching</li>
+            <li>Video chat integration</li>
+            <li>Mobile app version</li>
+          </ul>
+
+        </section>
+
+        <section id="technical" class="card" style="margin-top:16px">
+          <h2>Technology Overview</h2>
+          <ul>
+            <li>Frontend: HTML, CSS, JavaScript</li>
+            <li>Backend: Node.js and Express</li>
+            <li>Database: MongoDB</li>
+            <li>Hosting: GitHub Pages / Render</li>
+          </ul>
+
+          <h3>Basic Technical Features</h3>
+          <ul>
+            <li>Responsive layout using CSS</li>
+            <li>Form validation with JavaScript</li>
+            <li>API connection to backend</li>
+          </ul>
+
+          <h3>Advanced Technical Features</h3>
+          <ul>
+            <li>Real-time chat with WebSockets</li>
+            <li>JWT-based authentication</li>
+            <li>Machine learning recommendations</li>
+          </ul>
+        </section>
+
+      </div>
+
+      <aside class="sidebar">
+        <section class="card">
+          <h3>Proposal Last Updated</h3>
+          <p class="meta">October 22, 2025</p>
+
+          <div style="margin-top:12px">
+            <button class="btn primary" id="openDemo">Open demo profile</button>
+            <button class="btn ghost" id="downloadBtn">Download HTML</button>
+          </div>
+          <p class="small-note">This single-file page is ready to host on GitHub Pages: place it in your repository's root as <code>index.html</code>.</p>
+        </section>
+
+        <section class="card" style="margin-top:12px">
+          <h3>Quick profile demo</h3>
+          <p class="small-note">Create a sample profile to preview matching.</p>
+          <form id="demoForm" onsubmit="return false">
+            <input id="name" placeholder="Your name" required />
+            <select id="hobby">
+              <option value="reading">Reading</option>
+              <option value="gaming">Gaming</option>
+              <option value="sports">Sports</option>
+              <option value="music">Music</option>
+            </select>
+            <textarea id="bio" rows="3" placeholder="Short bio (optional)"></textarea>
+            <div style="display:flex;gap:8px">
+              <button class="btn primary" id="create">Create</button>
+              <button class="btn ghost" id="reset">Reset</button>
+            </div>
+          </form>
+          <div id="result" style="margin-top:12px;display:none" class="small-note card"></div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <div style="max-width:var(--max-width);margin:0 auto;padding:6px 36px;">© MatchMate — Proposal page. Ready to be extended into a full application.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Small demo JS: create a simple profile preview and enable download
+    const demoForm = document.getElementById('demoForm');
+    const result = document.getElementById('result');
+    document.getElementById('create').addEventListener('click', ()=>{
+      const name = document.getElementById('name').value.trim();
+      const hobby = document.getElementById('hobby').value;
+      const bio = document.getElementById('bio').value.trim();
+      if(!name){alert('Please enter a name');return}
+      result.style.display='block';
+      result.innerHTML = `<strong>${name}</strong> — <em>${hobby}</em><p>${bio||'<span class="small-note">No bio provided</span>'}</p>`;
+    });
+    document.getElementById('reset').addEventListener('click', ()=>{demoForm.reset(); result.style.display='none'});
+
+    // Download the current page's HTML as a file
+    document.getElementById('downloadBtn').addEventListener('click', ()=>{
+      const html = '<!doctype html>' + document.documentElement.outerHTML;
+      const blob = new Blob([html], {type: 'text/html'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'index.html'; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+
+    // open a demo modal (simple) — here we just scroll to demo
+    document.getElementById('openDemo').addEventListener('click', ()=>{document.getElementById('name').focus(); window.scrollTo({top:document.getElementById('demoForm').offsetTop,behavior:'smooth'})});
+  </script>
+</body>
+</html>
